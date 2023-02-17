@@ -2,6 +2,8 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
+import './styles/main.scss'
+
 import './assets/main.css'
 // 1. 引入你需要的组件
 import { Button } from 'vant'

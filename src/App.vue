@@ -6,7 +6,14 @@
     <van-button type="default">默认按钮</van-button>
     <van-button type="warning">警告按钮</van-button>
     <van-button type="danger">危险按钮</van-button>
+    <hr />
+
+    <a href="#">123</a>
   </div>
 </template>
 <script setup lang="ts"></script>
-<style scoped></style>
+<style scoped lang="scss">
+a {
+  color: var(--cp-primary);
+}
+</style>
