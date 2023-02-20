@@ -1,11 +1,13 @@
 import { useStoreUser } from '@/stores'
 import router from '@/router'
-import axios from 'axios'
+import axios, { AxiosError, type Method } from 'axios'
 import { showToast } from 'vant'
 
 // 1. 新axios实例，基础配置
 const instance = axios.create({
-  baseURL: 'https://consult-api.itheima.net/',
+  //   baseURL: 'https://consult-api.itheima.net/',
+  baseURL: 'http://geek.itheima.net/v1_0',
+
   timeout: 10000
 })
 
@@ -47,4 +49,22 @@ instance.interceptors.response.use(
   }
 )
 
-export { instance }
+type Data<T> = {
+  code: number
+  message: string
+  data: T
+}
+// 4. 请求工具函数
+const request = <T>(
+  url: string,
+  method: Method = 'get',
+  submitData?: object
+) => {
+  return instance.request<T, Data<T>>({
+    url,
+    method,
+    [method.toLowerCase() === 'get' ? 'params' : 'data']: submitData
+  })
+}
+
+export { request }
