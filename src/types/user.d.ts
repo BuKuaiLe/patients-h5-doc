@@ -1,5 +1,6 @@
 // 用户信息
 export type User = {
+  refreshToken: string
   /** token令牌 */
   token: string
   /** 用户ID */
@@ -10,4 +11,15 @@ export type User = {
   mobile: string
   /** 头像 */
   avatar: string
+}
+
+export type CodeType =
+  | 'login'
+  | 'register'
+  | 'changeMobile'
+  | 'forgetPassword'
+  | 'bindMobile'
+
+export type Code = {
+  code: string
 }

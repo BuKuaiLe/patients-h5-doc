@@ -5,8 +5,8 @@ import { showToast } from 'vant'
 
 // 1. 新axios实例，基础配置
 const instance = axios.create({
-  //   baseURL: 'https://consult-api.itheima.net/',
-  baseURL: 'http://geek.itheima.net/v1_0',
+  baseURL: 'https://consult-api.itheima.net/',
+  // baseURL: 'http://geek.itheima.net/v1_0',
 
   timeout: 10000
 })

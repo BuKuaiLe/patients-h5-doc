@@ -1,9 +1,21 @@
 <script setup lang="ts">
+defineProps<{
+  title?: string
+  rightText?: string
+}>()
+
+const emit = defineEmits<{
+  (e: 'handleLeft'): void
+  (e: 'handleRight'): void
+}>()
+
 const onClickLeft = () => {
   // TODO 点击左侧返回按钮
+  emit('handleLeft')
 }
 const onClickRight = () => {
   // TODO 点击右侧文字按钮
+  emit('handleRight')
 }
 </script>
 
@@ -11,8 +23,8 @@ const onClickRight = () => {
   <van-nav-bar
     fixed
     left-arrow
-    title="登录"
-    right-text="注册"
+    :title="title"
+    :right-text="rightText"
     @click-left="onClickLeft"
     @click-right="onClickRight"
   ></van-nav-bar>
