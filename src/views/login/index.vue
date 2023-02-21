@@ -13,6 +13,8 @@ const code = ref('') //验证码
 const agree = ref(true)
 const isPass = ref(true) //判断是密码登录还是验证码登录
 const form = ref<FormInstance>()
+// 控制密码是否显示
+const show = ref(false)
 
 // 密码登录
 const login = async () => {
@@ -80,8 +82,16 @@ const getCode = async () => {
         v-model="password"
         :rules="passwordRules"
         placeholder="请输入密码"
-        type="password"
-      ></van-field>
+        :type="show ? 'text' : 'password'"
+      >
+        <template #button>
+          <cp-icon
+            @click="show = !show"
+            :name="`login-eye-${show ? 'on' : 'off'}`"
+          >
+          </cp-icon>
+        </template>
+      </van-field>
       <!-- 验证码 -->
       <van-field
         v-else

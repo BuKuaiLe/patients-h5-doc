@@ -5,7 +5,7 @@ import router from './router'
 import './styles/main.scss'
 // 导入pinia实例
 import pinia from './stores/index'
-
+import 'virtual:svg-icons-register'
 import './assets/main.css'
 // 1. 引入vant组件
 import { Button } from 'vant'
