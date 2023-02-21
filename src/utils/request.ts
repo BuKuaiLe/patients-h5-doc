@@ -53,7 +53,7 @@ type Data<T> = {
 }
 
 // 4. 请求工具函数
-export const request = <T>(
+const request = <T>(
   url: string,
   method: Method = 'GET',
   submitData?: object
@@ -65,4 +65,4 @@ export const request = <T>(
   })
 }
 
-export { instance }
+export { request }
