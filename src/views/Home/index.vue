@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import KnowledgeList from './KnowledgeList.vue'
+import KnowledgeList from './components/KnowledgeList.vue'
+import FollowDoctor from './components/FollowDoctor.vue'
 
 import { ref } from 'vue'
 // active 的值是 tab 的索引
@@ -80,11 +81,20 @@ const active = ref(1)
         </van-swipe-item>
       </van-swipe>
     </div>
-    <van-tabs shrink sticky v-model:actie="active">
-      <van-tab title="关注"><knowledge-list /> </van-tab>
-      <van-tab title="推荐"><knowledge-list /></van-tab>
-      <van-tab title="减脂"><knowledge-list /></van-tab>
-      <van-tab title="饮食"><knowledge-list /></van-tab>
+    <van-tabs shrink sticky v-model:active="active">
+      <van-tab title="关注">
+        <follow-doctor></follow-doctor>
+        <knowledge-list type="like" />
+      </van-tab>
+      <van-tab title="推荐">
+        <knowledge-list type="recommend" />
+      </van-tab>
+      <van-tab title="减脂">
+        <knowledge-list type="fatReduction" />
+      </van-tab>
+      <van-tab title="饮食">
+        <knowledge-list type="food" />
+      </van-tab>
     </van-tabs>
   </div>
 </template>
