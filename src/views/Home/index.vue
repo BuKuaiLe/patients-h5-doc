@@ -4,7 +4,7 @@ import FollowDoctor from './components/FollowDoctor.vue'
 
 import { ref } from 'vue'
 // active 的值是 tab 的索引
-const active = ref(1)
+const active = ref(0)
 </script>
 
 <template>

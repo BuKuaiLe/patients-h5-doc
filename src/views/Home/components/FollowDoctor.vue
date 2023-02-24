@@ -1,5 +1,22 @@
 <script setup lang="ts">
 import DoctorCard from './DoctorCard.vue'
+import { useWindowSize } from '@vueuse/core'
+import { getDoctorPage } from '@/services/consult'
+import { ref } from 'vue'
+import type { DoctorList } from '@/types/consult'
+const { width } = useWindowSize()
+
+// const params = ref<PageParams>({
+//   current: 1,
+//   pageSize: 5
+// })
+const list = ref<DoctorList>()
+const getList = async () => {
+  const res = await getDoctorPage({ current: 1, pageSize: 5 })
+  list.value = res.data.rows
+}
+
+getList()
 </script>
 
 <template>
@@ -10,9 +27,13 @@ import DoctorCard from './DoctorCard.vue'
     </div>
     <div class="body">
       <!-- swipe 组件 -->
-      <van-swipe :width="150" :show-indicators="false" :loop="false">
-        <van-swipe-item v-for="item in 5" :key="item">
-          <doctor-card />
+      <van-swipe
+        :width="(150 / 375) * width"
+        :show-indicators="false"
+        :loop="false"
+      >
+        <van-swipe-item v-for="item in list" :key="item.id">
+          <doctor-card :item="item" />
         </van-swipe-item>
       </van-swipe>
     </div>
